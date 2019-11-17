@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="exportApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Export Audit Trail</title>
+    <base href="/"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  
+</head>
+
+<body ng-cloak>
+    <div class="container" ng-controller="MainController">
+        <div class="navbar" >
+          <h2>{{message}}</h2>
+        </div>
+        <div>
+                <div class="input-group">
+                        <select class="custom-select" id="inputGroupSelect04" ng-model="exportFormat">
+                          <option value="0" selected>Choose Format...</option>
+                          <option value="pdf">PDF</option>
+                          <option value="xlsx">Excel</option>
+                          
+                        </select>
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary" type="button" ng-click="export()">Export</button>
+                        </div>
+                      </div>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
+               
+                    <th scope="col">
+                        Date
+                    </th>
+                    <th scope="col">
+                        User
+                    </th>
+                    <th scope="col">
+                        Action
+                    </th>
+                    <th scope="col">
+                        Type
+                    </th>
+                    <th scope="col">
+                        Summary
+                    </th>
+
+                
+            </thead>
+            <tbody>
+                <tr ng-repeat="entry in auditData" >
+                    <td>
+                        {{entry.datestamp}}
+                    </td>
+                    <td>
+                        {{entry.userid}}
+                    </td>
+                    <td>
+                        {{entry.action}}
+                    </td>
+                    <td>
+                        {{entry.datatype}}
+                    </td>
+                    <td>
+                        {{entry.summary}}
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        
+
+    </div>
+    <script src="/lib/jquery.min.js"></script>
+    <script src="/lib/underscore-1.4.4.min.js"></script>
+    <script src="/lib/bootstrap.min.js"></script>
+    <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/angular/angular-sanitize.js"></script>
+    <script src="/lib/angular/angular-resource.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/controllers/MainController.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script> -->
+    <script src="https://unpkg.com/jspdf"></script>
+    <script src="https://unpkg.com/jspdf-autotable"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alasql/0.4.11/alasql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.9.2/xlsx.core.min.js"></script>   
+</body>
+
+</html>
